@@ -6,15 +6,18 @@
         "limitSymbolsToIncludedHeaders": false
       },
       "includePath": [
-        "/opt/ros/rolling/include/**",
-        "/home/marti/ros2_ws/src/robot_arm_control/include/**",
-        "/usr/include/**"
+        "/opt/ros/rolling/include/**",                // Percorso delle librerie ROS2
+        "/home/marti/ros2_ws/src/robot_arm_control/include/**",  // Percorso di inclusione del tuo pacchetto
+        "/usr/include/**",                             // Percorsi generali di sistema
+        "/usr/include/eigen3/**"                       // Aggiungi il percorso per Eigen3
       ],
       "name": "ROS",
-      "intelliSenseMode": "gcc-x64",
-      "compilerPath": "/usr/bin/gcc",
-      "cStandard": "gnu11",
-      "cppStandard": "c++14"
+      "intelliSenseMode": "gcc-x64",                   // IntelliSense per GCC su architettura x64
+      "compilerPath": "/usr/bin/g++",                   // Usa g++ per C++ e ROS2
+      "cStandard": "gnu11",                             // Standard C
+      "cppStandard": "c++14",                          // Standard C++ compatibile con ROS2
+      "defines": [],
+      "forcedInclude": []
     }
   ],
   "version": 4
