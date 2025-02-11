@@ -1,0 +1,26 @@
+[0.023s] Invoking command in '/home/marti/ros2_ws/build/robot_arm_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake --build /home/marti/ros2_ws/build/robot_arm_control -- -j8 -l8
+[0.075s] [35m[1mScanning dependencies of target robot_arm_node[0m
+[0.109s] [ 50%] [32mBuilding CXX object CMakeFiles/robot_arm_node.dir/src/robot_arm_node.cpp.o[0m
+[5.540s] [100%] [32m[1mLinking CXX executable robot_arm_node[0m
+[5.917s] [100%] Built target robot_arm_node
+[5.931s] Invoked command in '/home/marti/ros2_ws/build/robot_arm_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake --build /home/marti/ros2_ws/build/robot_arm_control -- -j8 -l8
+[5.945s] Invoking command in '/home/marti/ros2_ws/build/robot_arm_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake --install /home/marti/ros2_ws/build/robot_arm_control
+[5.954s] -- Install configuration: ""
+[5.954s] -- Execute custom install script
+[5.955s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/lib/robot_arm_control/robot_arm_node
+[5.956s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/share/ament_index/resource_index/package_run_dependencies/robot_arm_control
+[5.956s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/share/ament_index/resource_index/parent_prefix_path/robot_arm_control
+[5.957s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/environment/ament_prefix_path.sh
+[5.957s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/environment/ament_prefix_path.dsv
+[5.957s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/environment/path.sh
+[5.957s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/environment/path.dsv
+[5.958s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/local_setup.bash
+[5.958s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/local_setup.sh
+[5.959s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/local_setup.zsh
+[5.959s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/local_setup.dsv
+[5.959s] -- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/package.dsv
+[5.970s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/share/ament_index/resource_index/packages/robot_arm_control
+[5.971s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/cmake/robot_arm_controlConfig.cmake
+[5.971s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/cmake/robot_arm_controlConfig-version.cmake
+[5.971s] -- Up-to-date symlink: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/package.xml
+[5.975s] Invoked command in '/home/marti/ros2_ws/build/robot_arm_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake --install /home/marti/ros2_ws/build/robot_arm_control

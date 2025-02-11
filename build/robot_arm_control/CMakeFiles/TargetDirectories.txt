@@ -1,0 +1,10 @@
+/home/marti/ros2_ws/build/robot_arm_control/CMakeFiles/install/strip.dir
+/home/marti/ros2_ws/build/robot_arm_control/CMakeFiles/install/local.dir
+/home/marti/ros2_ws/build/robot_arm_control/CMakeFiles/edit_cache.dir
+/home/marti/ros2_ws/build/robot_arm_control/CMakeFiles/test.dir
+/home/marti/ros2_ws/build/robot_arm_control/CMakeFiles/install.dir
+/home/marti/ros2_ws/build/robot_arm_control/CMakeFiles/list_install_components.dir
+/home/marti/ros2_ws/build/robot_arm_control/CMakeFiles/rebuild_cache.dir
+/home/marti/ros2_ws/build/robot_arm_control/CMakeFiles/robot_arm_node.dir
+/home/marti/ros2_ws/build/robot_arm_control/CMakeFiles/robot_arm_control_uninstall.dir
+/home/marti/ros2_ws/build/robot_arm_control/CMakeFiles/uninstall.dir

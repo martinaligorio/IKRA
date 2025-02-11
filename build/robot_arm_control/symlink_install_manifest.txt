@@ -1,0 +1,16 @@
+/home/marti/ros2_ws/install/robot_arm_control/lib/robot_arm_control/robot_arm_node
+/home/marti/ros2_ws/install/robot_arm_control/share/ament_index/resource_index/package_run_dependencies/robot_arm_control
+/home/marti/ros2_ws/install/robot_arm_control/share/ament_index/resource_index/parent_prefix_path/robot_arm_control
+/home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/environment/ament_prefix_path.sh
+/home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/environment/ament_prefix_path.dsv
+/home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/environment/path.sh
+/home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/environment/path.dsv
+/home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/local_setup.bash
+/home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/local_setup.sh
+/home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/local_setup.zsh
+/home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/local_setup.dsv
+/home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/package.dsv
+/home/marti/ros2_ws/install/robot_arm_control/share/ament_index/resource_index/packages/robot_arm_control
+/home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/cmake/robot_arm_controlConfig.cmake
+/home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/cmake/robot_arm_controlConfig-version.cmake
+/home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/package.xml

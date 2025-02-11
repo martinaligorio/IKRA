@@ -1,0 +1,11 @@
+[0.030s] Invoking command in '/home/marti/ros2_ws/build/robot_arm_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake --build /home/marti/ros2_ws/build/robot_arm_control -- -j8 -l8
+[0.252s] [35m[1mScanning dependencies of target robot_arm_node[0m
+[0.471s] [ 50%] [32mBuilding CXX object CMakeFiles/robot_arm_node.dir/src/robot_arm_node.cpp.o[0m
+[4.557s] [100%] [32m[1mLinking CXX executable robot_arm_node[0m
+[4.793s] /usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
+[4.794s] (.text+0x24): undefined reference to `main'
+[4.794s] collect2: error: ld returned 1 exit status
+[4.795s] make[2]: *** [CMakeFiles/robot_arm_node.dir/build.make:145: robot_arm_node] Error 1
+[4.795s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/robot_arm_node.dir/all] Error 2
+[4.796s] make: *** [Makefile:141: all] Error 2
+[4.798s] Invoked command in '/home/marti/ros2_ws/build/robot_arm_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake --build /home/marti/ros2_ws/build/robot_arm_control -- -j8 -l8

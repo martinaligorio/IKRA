@@ -1,0 +1,50 @@
+-- The C compiler identification is GNU 9.4.0
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.2.1 (/opt/ros/rolling/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3.8 (found version "3.8.10") found components: Interpreter 
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found rclcpp: 15.0.0 (/opt/ros/rolling/share/rclcpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 3.0.1 (/opt/ros/rolling/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 5.1.0 (/opt/ros/rolling/share/rmw_implementation_cmake/cmake)
+-- Found rmw_cyclonedds_cpp: 1.1.2 (/opt/ros/rolling/share/rmw_cyclonedds_cpp/cmake)
+-- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+-- Found geometry_msgs: 4.0.0 (/opt/ros/rolling/share/geometry_msgs/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/marti/ros2_ws/build/robot_arm_control
+[35m[1mScanning dependencies of target robot_arm_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/robot_arm_node.dir/src/robot_arm_node.cpp.o[0m
+[100%] [32m[1mLinking CXX executable robot_arm_node[0m
+[100%] Built target robot_arm_node
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/lib/robot_arm_control/robot_arm_node
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/ament_index/resource_index/package_run_dependencies/robot_arm_control
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/ament_index/resource_index/parent_prefix_path/robot_arm_control
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/environment/ament_prefix_path.sh
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/environment/ament_prefix_path.dsv
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/environment/path.sh
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/environment/path.dsv
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/local_setup.bash
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/local_setup.sh
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/local_setup.zsh
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/local_setup.dsv
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/package.dsv
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/ament_index/resource_index/packages/robot_arm_control
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/cmake/robot_arm_controlConfig.cmake
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/cmake/robot_arm_controlConfig-version.cmake
+-- Symlinking: /home/marti/ros2_ws/install/robot_arm_control/share/robot_arm_control/package.xml
