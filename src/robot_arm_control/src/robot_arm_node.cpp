@@ -46,10 +46,10 @@ class RobotArmControl : public rclcpp::Node{
             tinyxml2::XMLElement* joint = root->FirstChildElement("joint"); // leggi elemento joint dal file xml
             if(joint) {
                 double theta ==std::stoof(joint->Attribute("theta"));
-                double theta ==std::stoof(joint->Attribute("d"));
-                double theta ==std::stoof(joint->Attribute("a"));
-                double theta ==std::stoof(joint->Attribute("alpha"));
-                dh_parameters_.push_back(Eigen::Vector4d(theta, d, a alpha)); //i parametri DH di ogni joint vengono memorizzati in un vettore
+                double d ==std::stoof(joint->Attribute("d"));
+                double a ==std::stoof(joint->Attribute("a"));
+                double alpha ==std::stoof(joint->Attribute("alpha"));
+                dh_parameters_.push_back(Eigen::Vector4d(theta, d, a, alpha)); //i parametri DH di ogni joint vengono memorizzati in un vettore
                 root = joint->NextSibilingElement("joint"); // va al prossimo giunto
             }
         }  
