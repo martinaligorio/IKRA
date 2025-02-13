@@ -1,0 +1,6 @@
+[0.015s] Invoking command in '/home/ubuntu/IKRA/build/robot_arm_control': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/ubuntu/IKRA/build/robot_arm_control -- -j4 -l4
+[0.164s] [0mCMake Error: The current CMakeCache.txt directory /home/ubuntu/IKRA/build/robot_arm_control/CMakeCache.txt is different than the directory /home/marti/ros2_ws/build/robot_arm_control where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt[0m
+[0.219s] [0mCMake Error: The source directory "/home/marti/ros2_ws/src/robot_arm_control" does not exist.
+[0.219s] Specify --help for usage, or press the help button on the CMake GUI.[0m
+[0.225s] make: *** [Makefile:266: cmake_check_build_system] Error 1
+[0.227s] Invoked command in '/home/ubuntu/IKRA/build/robot_arm_control' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/ubuntu/IKRA/build/robot_arm_control -- -j4 -l4

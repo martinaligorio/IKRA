@@ -3,13 +3,24 @@
 <package format="3">
   <name>robot_arm_control</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>Pacchetto per controllo di braccio robotico</description>
   <maintainer email="martinalig@yahoo.it">marti</maintainer>
   <license>Apache-2.0</license>
 
-
+  <!-- dipendenze per la build -->
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <build_depend>Eigen3</build_depend>
+  <build_depend>rclcpp</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>TinyXML2</build_depend>
 
+
+ <!-- dipendenze per l'esecuzione -->
+  <exec_depend>Eigen3</exec_depend>
+  <exec_depend>rclcpp</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>TinyXML2</exec_depend>
+<!-- dipendenze per i test -->
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
