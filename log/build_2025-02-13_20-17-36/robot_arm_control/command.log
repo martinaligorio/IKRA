@@ -1,2 +1,0 @@
-Invoking command in '/home/ubuntu/IKRA/build/robot_arm_control': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/ubuntu/IKRA/build/robot_arm_control -- -j4 -l4
-Invoked command in '/home/ubuntu/IKRA/build/robot_arm_control' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/ubuntu/IKRA/build/robot_arm_control -- -j4 -l4

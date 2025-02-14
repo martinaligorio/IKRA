@@ -38,7 +38,7 @@ class RobotArmControl : public rclcpp::Node{
         void  read_DH_parameters(const std::string& file_name) {
             tinyxml2::XMLDocument doc; // crea oggetto XML document della librearia TinyXML2
             doc.LoadFile(file_name.c_str()); // carica file XML
-            if(doc.Error()) {
+            if(doc.Error()) {   
                 RCLCPP_ERROR(this->get_logger(), "errore nella lettura del file");
                 return;
             }
@@ -148,14 +148,6 @@ class RobotArmControl : public rclcpp::Node{
             RCLCPP_INFO(this->get_logger(),"sono passati 5 secondi, ferma il nodo");
             rclcpp::shutdown();
         }
-
-        /*publisher ROS2*/
-        rclcpp::Publisher<geometry_msgs::msg::Pose>::SharedPtr publisher_;
-
-        /*timer ROS2*/
-        rclcpp::TimerBase::SharedPtr timer_;
-
-        rclcpp::TimerBase::SharedPtr stop_timer_;
 
 };
 
