@@ -30,7 +30,7 @@
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
 -- Found Threads: TRUE  
 -- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)
-[31mCMake Error at CMakeLists.txt:10 (find_package):
+[31mCMake Error at CMakeLists.txt:9 (find_package):
   By not providing "FindTinyXML2.cmake" in CMAKE_MODULE_PATH this project has
   asked CMake to find a package configuration file provided by "TinyXML2",
   but CMake did not find one.
