@@ -1,0 +1,21 @@
+[0.100s] Invoking command in '/home/ubuntu/IKRA/build/robot_arm_control': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/ubuntu/IKRA/src/robot_arm_control -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ubuntu/IKRA/install/robot_arm_control
+[0.658s] [31mCMake Error at CMakeLists.txt:5 (find_package):
+[0.658s]   By not providing "FindTinyXML2.cmake" in CMAKE_MODULE_PATH this project has
+[0.658s]   asked CMake to find a package configuration file provided by "TinyXML2",
+[0.658s]   but CMake did not find one.
+[0.659s] 
+[0.659s]   Could not find a package configuration file provided by "TinyXML2" with any
+[0.660s]   of the following names:
+[0.660s] 
+[0.660s]     TinyXML2Config.cmake
+[0.660s]     tinyxml2-config.cmake
+[0.661s] 
+[0.661s]   Add the installation prefix of "TinyXML2" to CMAKE_PREFIX_PATH or set
+[0.661s]   "TinyXML2_DIR" to a directory containing one of the above files.  If
+[0.673s]   "TinyXML2" provides a separate development package or SDK, be sure it has
+[0.673s]   been installed.
+[0.674s] 
+[0.674s] [0m
+[0.674s] -- Configuring incomplete, errors occurred!
+[0.674s] See also "/home/ubuntu/IKRA/build/robot_arm_control/CMakeFiles/CMakeOutput.log".
+[0.770s] Invoked command in '/home/ubuntu/IKRA/build/robot_arm_control' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/ubuntu/IKRA/src/robot_arm_control -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ubuntu/IKRA/install/robot_arm_control
