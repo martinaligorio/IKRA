@@ -1,0 +1,119 @@
+[0.049s] Invoking command in '/home/marti/IKRA/build/robot_arm_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake /home/marti/IKRA/src/robot_arm_control -DCMAKE_INSTALL_PREFIX=/home/marti/IKRA/install/robot_arm_control
+[0.711s] -- The C compiler identification is GNU 9.4.0
+[1.220s] -- The CXX compiler identification is GNU 9.4.0
+[1.474s] -- Check for working C compiler: /usr/bin/cc
+[1.737s] -- Check for working C compiler: /usr/bin/cc -- works
+[1.739s] -- Detecting C compiler ABI info
+[2.103s] -- Detecting C compiler ABI info - done
+[2.128s] -- Detecting C compile features
+[2.128s] -- Detecting C compile features - done
+[2.132s] -- Check for working CXX compiler: /usr/bin/c++
+[2.536s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[2.539s] -- Detecting CXX compiler ABI info
+[2.797s] -- Detecting CXX compiler ABI info - done
+[2.860s] -- Detecting CXX compile features
+[2.862s] -- Detecting CXX compile features - done
+[2.877s] -- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
+[2.881s] -- Checking for module 'tinyxml2'
+[2.923s] --   Found tinyxml2, version 6.2.0
+[3.320s] -- Found ament_cmake: 1.2.1 (/opt/ros/rolling/share/ament_cmake/cmake)
+[3.605s] -- Found Python3: /usr/bin/python3.8 (found version "3.8.10") found components: Interpreter 
+[3.750s] -- Found rclcpp: 15.0.0 (/opt/ros/rolling/share/rclcpp/cmake)
+[3.883s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[3.896s] -- Found rosidl_adapter: 3.0.1 (/opt/ros/rolling/share/rosidl_adapter/cmake)
+[3.988s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.184s] -- Found rmw_implementation_cmake: 5.1.0 (/opt/ros/rolling/share/rmw_implementation_cmake/cmake)
+[4.190s] -- Found rmw_cyclonedds_cpp: 1.1.2 (/opt/ros/rolling/share/rmw_cyclonedds_cpp/cmake)
+[4.248s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[4.616s] -- Found geometry_msgs: 4.0.0 (/opt/ros/rolling/share/geometry_msgs/cmake)
+[4.814s] -- Configuring done
+[4.842s] -- Generating done
+[4.854s] -- Build files have been written to: /home/marti/IKRA/build/robot_arm_control
+[4.878s] Invoked command in '/home/marti/IKRA/build/robot_arm_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake /home/marti/IKRA/src/robot_arm_control -DCMAKE_INSTALL_PREFIX=/home/marti/IKRA/install/robot_arm_control
+[4.882s] Invoking command in '/home/marti/IKRA/build/robot_arm_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake --build /home/marti/IKRA/build/robot_arm_control -- -j8 -l8
+[4.983s] [35m[1mScanning dependencies of target robot_arm_node[0m
+[5.136s] [ 50%] [32mBuilding CXX object CMakeFiles/robot_arm_node.dir/src/robot_arm_node.cpp.o[0m
+[10.920s] In file included from [01m[K/opt/ros/rolling/include/rclcpp/client.hpp:43[m[K,
+[10.921s]                  from [01m[K/opt/ros/rolling/include/rclcpp/callback_group.hpp:23[m[K,
+[10.921s]                  from [01m[K/opt/ros/rolling/include/rclcpp/any_executable.hpp:20[m[K,
+[10.921s]                  from [01m[K/opt/ros/rolling/include/rclcpp/memory_strategy.hpp:25[m[K,
+[10.921s]                  from [01m[K/opt/ros/rolling/include/rclcpp/memory_strategies.hpp:18[m[K,
+[10.921s]                  from [01m[K/opt/ros/rolling/include/rclcpp/executor_options.hpp:20[m[K,
+[10.921s]                  from [01m[K/opt/ros/rolling/include/rclcpp/executor.hpp:37[m[K,
+[10.922s]                  from [01m[K/opt/ros/rolling/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[10.922s]                  from [01m[K/opt/ros/rolling/include/rclcpp/executors.hpp:21[m[K,
+[10.922s]                  from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp.hpp:155[m[K,
+[10.922s]                  from [01m[K/home/marti/IKRA/src/robot_arm_control/src/robot_arm_node.cpp:2[m[K:
+[10.922s] [01m[K/home/marti/IKRA/src/robot_arm_control/src/robot_arm_node.cpp:[m[K In member function ‘[01m[Kvoid RobotArmControl::calculate_jacobian(const Vector3d&, Eigen::MatrixXd&)[m[K’:
+[10.922s] [01m[K/home/marti/IKRA/src/robot_arm_control/src/robot_arm_node.cpp:80:45:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%f[m[K’ expects a matching ‘[01m[Kdouble[m[K’ argument [[01;35m[K-Wformat=[m[K]
+[10.922s]    80 |             RCLCPP_INFO(this->get_logger(), [01;35m[K"Jacobiana:\n%.2f %.2f %.2f\n%.2f %.2f %.2f\n%.2f %.2f %.2f"[m[K,
+[10.922s]       |                                             [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[10.923s] [01m[K/home/marti/IKRA/src/robot_arm_control/src/robot_arm_node.cpp:80:93:[m[K [01;36m[Knote: [m[Kformat string is defined here
+[10.923s]    80 | et_logger(), "Jacobiana:\n%.2f %.2f %.2f\n%.2f %.2f %.2f\n[01;36m[K%.2f[m[K %.2f %.2f",
+[10.923s]       |                                                           [01;36m[K~~~^[m[K
+[10.923s]       |                                                              [01;36m[K|[m[K
+[10.923s]       |                                                              [01;36m[Kdouble[m[K
+[10.923s] 
+[10.923s] In file included from [01m[K/opt/ros/rolling/include/rclcpp/client.hpp:43[m[K,
+[10.923s]                  from [01m[K/opt/ros/rolling/include/rclcpp/callback_group.hpp:23[m[K,
+[10.924s]                  from [01m[K/opt/ros/rolling/include/rclcpp/any_executable.hpp:20[m[K,
+[10.924s]                  from [01m[K/opt/ros/rolling/include/rclcpp/memory_strategy.hpp:25[m[K,
+[10.924s]                  from [01m[K/opt/ros/rolling/include/rclcpp/memory_strategies.hpp:18[m[K,
+[10.924s]                  from [01m[K/opt/ros/rolling/include/rclcpp/executor_options.hpp:20[m[K,
+[10.924s]                  from [01m[K/opt/ros/rolling/include/rclcpp/executor.hpp:37[m[K,
+[10.924s]                  from [01m[K/opt/ros/rolling/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[10.924s]                  from [01m[K/opt/ros/rolling/include/rclcpp/executors.hpp:21[m[K,
+[10.924s]                  from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp.hpp:155[m[K,
+[10.925s]                  from [01m[K/home/marti/IKRA/src/robot_arm_control/src/robot_arm_node.cpp:2[m[K:
+[10.925s] [01m[K/home/marti/IKRA/src/robot_arm_control/src/robot_arm_node.cpp:80:45:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%f[m[K’ expects a matching ‘[01m[Kdouble[m[K’ argument [[01;35m[K-Wformat=[m[K]
+[10.925s]    80 |             RCLCPP_INFO(this->get_logger(), [01;35m[K"Jacobiana:\n%.2f %.2f %.2f\n%.2f %.2f %.2f\n%.2f %.2f %.2f"[m[K,
+[10.925s]       |                                             [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[10.925s] [01m[K/home/marti/IKRA/src/robot_arm_control/src/robot_arm_node.cpp:80:98:[m[K [01;36m[Knote: [m[Kformat string is defined here
+[10.925s]    80 | et_logger(), "Jacobiana:\n%.2f %.2f %.2f\n%.2f %.2f %.2f\n%.2f [01;36m[K%.2f[m[K %.2f",
+[10.925s]       |                                                                [01;36m[K~~~^[m[K
+[10.925s]       |                                                                   [01;36m[K|[m[K
+[10.925s]       |                                                                   [01;36m[Kdouble[m[K
+[10.926s] 
+[10.926s] In file included from [01m[K/opt/ros/rolling/include/rclcpp/client.hpp:43[m[K,
+[10.926s]                  from [01m[K/opt/ros/rolling/include/rclcpp/callback_group.hpp:23[m[K,
+[10.926s]                  from [01m[K/opt/ros/rolling/include/rclcpp/any_executable.hpp:20[m[K,
+[10.926s]                  from [01m[K/opt/ros/rolling/include/rclcpp/memory_strategy.hpp:25[m[K,
+[10.926s]                  from [01m[K/opt/ros/rolling/include/rclcpp/memory_strategies.hpp:18[m[K,
+[10.926s]                  from [01m[K/opt/ros/rolling/include/rclcpp/executor_options.hpp:20[m[K,
+[10.926s]                  from [01m[K/opt/ros/rolling/include/rclcpp/executor.hpp:37[m[K,
+[10.926s]                  from [01m[K/opt/ros/rolling/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[10.927s]                  from [01m[K/opt/ros/rolling/include/rclcpp/executors.hpp:21[m[K,
+[10.927s]                  from [01m[K/opt/ros/rolling/include/rclcpp/rclcpp.hpp:155[m[K,
+[10.927s]                  from [01m[K/home/marti/IKRA/src/robot_arm_control/src/robot_arm_node.cpp:2[m[K:
+[10.927s] [01m[K/home/marti/IKRA/src/robot_arm_control/src/robot_arm_node.cpp:80:45:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%f[m[K’ expects a matching ‘[01m[Kdouble[m[K’ argument [[01;35m[K-Wformat=[m[K]
+[10.927s]    80 |             RCLCPP_INFO(this->get_logger(), [01;35m[K"Jacobiana:\n%.2f %.2f %.2f\n%.2f %.2f %.2f\n%.2f %.2f %.2f"[m[K,
+[10.927s]       |                                             [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[10.927s] [01m[K/home/marti/IKRA/src/robot_arm_control/src/robot_arm_node.cpp:80:103:[m[K [01;36m[Knote: [m[Kformat string is defined here
+[10.927s]    80 | acobiana:\n%.2f %.2f %.2f\n%.2f %.2f %.2f\n%.2f %.2f [01;36m[K%.2f[m[K",
+[10.928s]       |                                                      [01;36m[K~~~^[m[K
+[10.928s]       |                                                         [01;36m[K|[m[K
+[10.928s]       |                                                         [01;36m[Kdouble[m[K
+[10.928s] 
+[18.367s] [100%] [32m[1mLinking CXX executable robot_arm_node[0m
+[18.909s] [100%] Built target robot_arm_node
+[18.928s] Invoked command in '/home/marti/IKRA/build/robot_arm_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake --build /home/marti/IKRA/build/robot_arm_control -- -j8 -l8
+[18.952s] Invoking command in '/home/marti/IKRA/build/robot_arm_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake --install /home/marti/IKRA/build/robot_arm_control
+[18.965s] -- Install configuration: ""
+[18.967s] -- Installing: /home/marti/IKRA/install/robot_arm_control/lib/robot_arm_control/robot_arm_node
+[18.970s] -- Set runtime path of "/home/marti/IKRA/install/robot_arm_control/lib/robot_arm_control/robot_arm_node" to ""
+[18.972s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/ament_index/resource_index/package_run_dependencies/robot_arm_control
+[18.973s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/ament_index/resource_index/parent_prefix_path/robot_arm_control
+[18.974s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/environment/ament_prefix_path.sh
+[18.975s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/environment/ament_prefix_path.dsv
+[18.975s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/environment/path.sh
+[18.975s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/environment/path.dsv
+[18.976s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/local_setup.bash
+[18.977s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/local_setup.sh
+[18.978s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/local_setup.zsh
+[18.978s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/local_setup.dsv
+[18.978s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/package.dsv
+[18.979s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/ament_index/resource_index/packages/robot_arm_control
+[18.980s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/cmake/robot_arm_controlConfig.cmake
+[18.981s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/cmake/robot_arm_controlConfig-version.cmake
+[18.981s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/package.xml
+[18.987s] Invoked command in '/home/marti/IKRA/build/robot_arm_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake --install /home/marti/IKRA/build/robot_arm_control

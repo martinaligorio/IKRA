@@ -4,5 +4,6 @@
     ],
     "python.analysis.extraPaths": [
         "/opt/ros/rolling/lib/python3.8/site-packages"
-    ]
+    ],
+    "cmake.sourceDirectory": "/home/marti/IKRA/src/robot_arm_control"
 }
