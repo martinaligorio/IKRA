@@ -3,12 +3,14 @@
 #include <geometry_msgs/msg/pose.hpp> //messaggio per posizioni e orientamenti
 #include <eigen3/Eigen/Dense> //libreria per algebra lineare 
 #include <iostream>
-#include <cmath>  
+#include <cmath>
+#include <tinyxml2.h>  
 
 
 using namespace std;
 /*timer*/
 using namespace std::chrono_literals;  //permette di usare 500ms come tempo
+using namespace tinyxml2;
 
 /*creo una classe che estende rclcpp::Node*/
 class RobotArmControl : public rclcpp::Node{
@@ -23,11 +25,9 @@ class RobotArmControl : public rclcpp::Node{
 
             //il timer si ferma dopo 5s
             stop_timer_=this->create_wall_timer(5s,bind(&RobotArmControl::stop_node,this));
-            
-            /*inizializzo i parametri della lunghezza del braccio*/
-            l1=0.5;
-            l2=0.5;
-            l3=0.5;
+
+            // Carica i parametri DH da file
+            read_DH_parameters("/home/marti/IKRA/src/robot_arm_control/src/dh_parameters.xml");
 
             //stampa messaggio per indicare che il nodo è stato avviato
             RCLCPP_INFO(this->get_logger(), "Nodo RobotArmControl avviato");
@@ -37,170 +37,154 @@ class RobotArmControl : public rclcpp::Node{
         rclcpp::Publisher<geometry_msgs::msg::Pose>::SharedPtr publisher_; //invia poszione del braccio al topic
         rclcpp::TimerBase::SharedPtr timer_; //chiama la funziona update position
         rclcpp::TimerBase::SharedPtr stop_timer_;// ferma il nodo dopo 5 secondi
-         
-        //lunghezze dei bracci
-        double l1,l2,l3;
+        bool printed_once_;
 
-        //funzione per calcolare la jacobiana per un braccio con 3 joints
-        void calculate_jacobian(const Eigen::Vector3d& joint_angles, Eigen::MatrixXd& J){
-            
-            double theta1 = joint_angles[0];
-            double theta2 = joint_angles[1];
-            double theta3 = joint_angles[2];
-   
-            // Log per vedere i valori degli angoli
-            RCLCPP_INFO(this->get_logger(), "Angoli giunti: theta1=%.2f, theta2=%.2f, theta3=%.2f",
-                        static_cast<double>(theta1), static_cast<double>(theta2), static_cast<double>(theta3));
-        
-            // Log per le lunghezze dei bracci
-            RCLCPP_INFO(this->get_logger(), "Lunghezze: l1=%.2f, l2=%.2f, l3=%.2f", l1, l2, l3);
-        
-            //calcolo della jacobiana
-            J(0,0)=-l1*sin(theta1)-l2*sin(theta1+theta2)-l3*sin(theta1+theta2+theta3);
-            J(0,1)=-l2*sin(theta1+theta2)-l3*sin(theta1+theta2+theta3);
-            J(0,2)=-l3*sin(theta1+theta2+theta3);
-            
-            J(1,0)=l1*cos(theta1)+l2*cos(theta1+theta2)+l3*cos(theta1+theta2+theta3);
-            J(1,1)=l2*cos(theta1+theta2)+l3*cos(theta1+theta2+theta3);
-            J(1,2)=l3*cos(theta1+theta2+theta3);
+        struct DHParam{
+            string theta;  //parametri q1,q2,q3
+            double d;
+            double a;
+            double alpha;
+        };
+        //vettore per i parametri DH:[theta, d, a, alpha]
+        vector<DHParam> dh_parameters;
 
-
-            // controllo se jac da valori nulli
-            if (J.array().isNaN().any() || !J.array().isFinite().all()) {
-                RCLCPP_ERROR(this->get_logger(), "La Jacobiana contiene NaN o Inf, interrompendo il calcolo.");
-                return;  // Esci dalla funzione in caso di NaN o Inf
-            }
-            //verifica se la jacobiana è singolare
-            if (J.determinant() < 1e-6) {
-                RCLCPP_ERROR(this->get_logger(), "La Jacobiana è singolare, interrotto il calcolo.");
+        void  read_DH_parameters(const string& file_name) {
+            XMLDocument doc; // crea oggetto XML document della librearia TinyXML2
+            XMLError e= doc.LoadFile(file_name.c_str()); // carica file XML
+            if(e!=XML_SUCCESS) {   
+                RCLCPP_ERROR(this->get_logger(), "errore nella lettura del file");
                 return;
             }
-        
 
-            RCLCPP_INFO(this->get_logger(), "Jacobiana:\n%.2f %.2f %.2f\n%.2f %.2f %.2f\n%.2f %.2f %.2f",
-            static_cast<double>(J(0, 0)), static_cast<double>(J(0, 1)), static_cast<double>(J(0, 2)),
-            static_cast<double>(J(1, 0)), static_cast<double>(J(1, 1)), static_cast<double>(J(1, 2)));
-        }
-
-        /*FUNZIONE PER CALCOLARE LA PSEUDO-INVERSA DELLA JACOBIANA*/
-        Eigen::MatrixXd pseudo_inverse(Eigen::MatrixXd J, double reg_param = 1e-6) {
-            Eigen::MatrixXd Jt = J.transpose();
-            Eigen::MatrixXd JtJ = Jt * J;
+                XMLElement* root = doc.RootElement();  // <robot_arm>
+            if (!root) {
+                RCLCPP_ERROR(this->get_logger(), "Elemento root non trovato nel file XML");
+                return;
+            }
             
-            // Aggiungi regolarizzazione alla matrice Jacobiana per evitare singolarità numeriche
-            Eigen::MatrixXd JtJ_inv = (JtJ + reg_param * Eigen::MatrixXd::Identity(JtJ.rows(), JtJ.cols())).inverse();
-            return JtJ_inv * Jt;
-        }
-        
-
-        Eigen::Vector3d forward_kinematics(const Eigen::Vector3d& joint_angles) {
-        
-            double x = l1 * cos(joint_angles[0]) + l2 * cos(joint_angles[0] + joint_angles[1]) + l3 * cos(joint_angles[0] + joint_angles[1] + joint_angles[2]);
-            double y = l1 * sin(joint_angles[0]) + l2 * sin(joint_angles[0] + joint_angles[1]) + l3 * sin(joint_angles[0] + joint_angles[1] + joint_angles[2]);
-            double z = 0; // Supponiamo che sia un braccio planare
-        
-            return Eigen::Vector3d(x, y, z);
-        }
-        
-        /*INVERSE KINEMATICS*/
-        //dato un punto nello spazio "target" mi deve restituire gli angoli necessari per raggiungerlo
-        Eigen::Vector3d calculate_inverse_kinematics(const Eigen::Vector3d target){
-            Eigen::MatrixXd J(3,3);  //jacobiana 3x3
-            Eigen::Vector3d joint_angles(-0.785, 0.785, 0.785);
-            Eigen::Vector3d current_position = forward_kinematics(joint_angles);  //angoli iniziali  
+            // Pulisci eventuali dati precedenti
+            dh_parameters.clear();
             
-            //itero per calcolare gli angoli dei joints
-            for(int i=0;i<1000;i++){
-                Eigen::Vector3d position_error=target-current_position;  //calcolo l'errore nella posizione
-                
-                // Log per verificare l'errore
-                RCLCPP_INFO(this->get_logger(), "Errore posizione: x=%.2f, y=%.2f, z=%.2f", position_error[0], position_error[1], position_error[2]);
+            XMLElement* joint = root->FirstChildElement("joint"); // leggi elemento joint dal file xml
+            while(joint) {
+                DHParam pDH;
+                pDH.alpha = 0.0; // default
+                pDH.d = 0.0;
+                pDH.a = 0.0;
+                pDH.theta = "";
 
-                if(position_error.norm()<0.001){
-                    break;
-                }
-                //calcolo la jacobiana per il joint corrente
-                calculate_jacobian(joint_angles,J);
-
-                // Verifica che la Jacobiana non contenga NaN o Inf
-                if (J.array().isNaN().any() || !J.array().isFinite().all()) {
-                    RCLCPP_ERROR(this->get_logger(), "La Jacobiana contiene NaN o Inf, non posso calcolare la pseudo-inversa.");
-                    break;
+                // Leggi <theta>
+                XMLElement* alphaElem = joint->FirstChildElement("alpha");
+                if(alphaElem && alphaElem->GetText()) {
+                    // Converto la stringa in double, se possibile
+                    // Se preferisci ignorare theta, lo puoi saltare
+                    pDH.alpha = stod(alphaElem->GetText());
                 }
 
-                //calcolo la speudo-inversa
-                Eigen::MatrixXd J_inv= pseudo_inverse(J);
+                    // Leggi <d>
+                XMLElement* dElem = joint->FirstChildElement("d");
+                if(dElem && dElem->GetText()) {
+                    pDH.d = stod(dElem->GetText());
+                }
 
-                //come variano gli angoli dei joints
-                Eigen::Vector3d delta_joint_angles=J_inv*position_error;
+                // Leggi <a>
+                XMLElement* aElem = joint->FirstChildElement("a");
+                if(aElem && aElem->GetText()) {
+                    pDH.a = stod(aElem->GetText());
+                }
+                // Leggi <alpha>
+                // In questo esempio, nel file c'è "q1", "q2", "q3"
+                // Salviamo come string
+                XMLElement* thetaElem = joint->FirstChildElement("theta");
+                if(thetaElem && thetaElem->GetText()) {
+                    pDH.theta =thetaElem->GetText(); 
+                }
 
-                // Log per vedere il cambiamento degli angoli
-                RCLCPP_INFO(this->get_logger(), "Delta joint angles: theta1=%.2f, theta2=%.2f, theta3=%.2f",
-                delta_joint_angles[0], delta_joint_angles[1], delta_joint_angles[2]);
+                // Aggiungo questo giunto al vettore
+                dh_parameters.push_back(pDH);
 
-                //aggiorno gli angoli
-                joint_angles+=delta_joint_angles;
-
-                // Aggiorna la posizione attuale
-                current_position = forward_kinematics(joint_angles);
-               
+                // Passa al prossimo <joint>
+                joint = joint->NextSiblingElement("joint");
+                }
             
+            // Log di debug
+            for (size_t i = 0; i < dh_parameters.size(); i++){
+                RCLCPP_INFO(this->get_logger(), 
+                    "Giunto %zu: aplha=%.2f, d=%.2f, a=%.2f, theta=%s", 
+                    i, dh_parameters[i].alpha, dh_parameters[i].d, dh_parameters[i].a, dh_parameters[i].theta.c_str()
+                );
             }
-            return joint_angles;
         }
 
+        Eigen::Vector3d analytical_IK_3joint_planar(double x, double y, double phi)
+    {
+        // Leggiamo a1, a2, a3 dai parametri
+        if (dh_parameters.size() < 3) {
+            RCLCPP_ERROR(get_logger(), "Non ho 3 giunti, impossibile calcolare IK");
+            return Eigen::Vector3d::Zero();
+        }
+
+        double a1 = dh_parameters[0].a;
+        double a2 = dh_parameters[1].a;
+        double a3 = dh_parameters[2].a;
+
+        double r = sqrt(x*x + y*y);
+        double max_reach = a1 + a2 + a3;
+        if (r > max_reach) {
+            RCLCPP_ERROR(get_logger(), "Target fuori portata");
+            return Eigen::Vector3d::Zero();
+        }
+
+        // braccio a 2 link (a1, a2+a3) => q1, q2
+        double cos_q2 = (r*r - a1*a1 - (a2+a3)*(a2+a3)) / (2.0*a1*(a2+a3));
+        if (cos_q2 > 1.0) cos_q2 = 1.0;
+        if (cos_q2 < -1.0) cos_q2 = -1.0;
+        double q2 = acos(cos_q2); // gomito su
+        double sin_q2 = sqrt(1.0 - cos_q2*cos_q2);
+        double beta = atan2((a2+a3)*sin_q2, a1 + (a2+a3)*cos_q2);
+        double q1 = atan2(y, x) - beta;
+
+        // q3 = phi - (q1 + q2)
+        double q3 = phi - (q1 + q2);
+
+        return Eigen::Vector3d(q1, q2, q3);
+    }
+
+    void update_position() {
+        // Esempio di target
+        double x = 0.3;
+        double y = -0.3;
+        double phi = 0.7; // orientamento finale
         
-        void update_position(){
-            //obiettivo(target) per la posizione del braccio(x,y,z)
-            Eigen::Vector3d target_position(0.3,-0.3,0.7);
+        // Calcolo IK analitico
+        Eigen::Vector3d q = analytical_IK_3joint_planar(x, y, phi);
 
-            // Verifica se la posizione target è raggiungibile
-            double max_reach = l1 + l2 + l3;  // Raggio massimo raggiungibile dal braccio
-            double target_distance = std::sqrt(target_position[0] * target_position[0] + target_position[1] * target_position[1]);
-            
-            if (target_distance > max_reach) {
-                RCLCPP_ERROR(this->get_logger(), "La posizione target è fuori dal raggio raggiungibile.");
-                return;  // Esci dalla funzione se il target è fuori dal raggio
-            }
-        
-            //calcola gli angoli degli joints tramite l'inverse kinemtics
-            Eigen::Vector3d joint_angles=calculate_inverse_kinematics(target_position);
+        // Creiamo un Pose da pubblicare (usiamo x= q1, y= q2, z= q3)
+        geometry_msgs::msg::Pose msg;
+        msg.position.x = q[0];
+        msg.position.y = q[1];
+        msg.position.z = q[2];
 
-            // Log per vedere gli angoli calcolati
-            RCLCPP_INFO(this->get_logger(), "Angoli calcolati: theta1=%.2f, theta2=%.2f, theta3=%.2f",
-            joint_angles[0], joint_angles[1], joint_angles[2]);
-            
-            //messaggio per inviare la posizione 
-            auto message= geometry_msgs::msg::Pose();
-            message.position.x=joint_angles[0];
-            message.position.y=joint_angles[1];
-            message.position.z=joint_angles[2];
-            
-            //restituisce sul topic ROS2 /arm_position
-            publisher_->publish(message);
+        publisher_->publish(msg);
 
-            //stampa della nuova posizione nella console
-            RCLCPP_INFO(this->get_logger(),"Posizione aggiornata: x=%.2f, y:%.2f, z:%.2f",joint_angles[0],joint_angles[1],joint_angles[2]);
-
+        if(!printed_once_){
+            RCLCPP_INFO(this->get_logger(), "Angoli analitici calcolati: q1=%.2f, q2=%.2f, q3=%.2f", 
+                        q[0], q[1], q[2]);
+            printed_once_ = true;
         }
+    }
 
-        void stop_node(){
-            //stoppa il nodo dopo 5 secondi
-            RCLCPP_INFO(this->get_logger(),"sono passati 5 secondi, ferma il nodo");
-            rclcpp::shutdown();
-        }
 
+    void stop_node() {
+        RCLCPP_INFO(get_logger(), "5 secondi trascorsi, chiudo il nodo");
+        rclcpp::shutdown();
+    }
 };
 
-int main(int argc, char* argv[]){
-    //inizializzo ROS2
-    rclcpp::init(argc,argv);
-
-    //creo e avvio il nodo
-    rclcpp::spin(make_shared<RobotArmControl>());
-
-    //termino ROS2 alla chisura del nodo
+int main(int argc, char* argv[])
+{
+    rclcpp::init(argc, argv);
+    rclcpp::spin(std::make_shared<RobotArmControl>());
     rclcpp::shutdown();
     return 0;
 }
-
