@@ -9,13 +9,7 @@
     <joint>
         <theta>q2</theta>
         <d>0.0</d>
-        <a>0.5</a>
-        <alpha>1.57</alpha>
-    </joint>
-    <joint>
-        <theta>q3</theta>
-        <d>0.0</d>
-        <a>0.5</a>
-        <alpha>-1.57</alpha>
+        <a>0.4</a>
+        <alpha>0.0</alpha>
     </joint>
 </robot_arm>

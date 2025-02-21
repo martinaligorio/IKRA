@@ -1,0 +1,26 @@
+[0.024s] Invoking command in '/home/marti/IKRA/build/robot_arm_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake --build /home/marti/IKRA/build/robot_arm_control -- -j8 -l8
+[0.081s] [35m[1mScanning dependencies of target robot_arm_node[0m
+[0.117s] [ 50%] [32mBuilding CXX object CMakeFiles/robot_arm_node.dir/src/robot_arm_node.cpp.o[0m
+[5.582s] [100%] [32m[1mLinking CXX executable robot_arm_node[0m
+[5.839s] [100%] Built target robot_arm_node
+[5.853s] Invoked command in '/home/marti/IKRA/build/robot_arm_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake --build /home/marti/IKRA/build/robot_arm_control -- -j8 -l8
+[5.869s] Invoking command in '/home/marti/IKRA/build/robot_arm_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake --install /home/marti/IKRA/build/robot_arm_control
+[5.878s] -- Install configuration: ""
+[5.878s] -- Installing: /home/marti/IKRA/install/robot_arm_control/lib/robot_arm_control/robot_arm_node
+[5.880s] -- Set runtime path of "/home/marti/IKRA/install/robot_arm_control/lib/robot_arm_control/robot_arm_node" to ""
+[5.881s] -- Up-to-date: /home/marti/IKRA/install/robot_arm_control/share/ament_index/resource_index/package_run_dependencies/robot_arm_control
+[5.881s] -- Up-to-date: /home/marti/IKRA/install/robot_arm_control/share/ament_index/resource_index/parent_prefix_path/robot_arm_control
+[5.881s] -- Up-to-date: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/environment/ament_prefix_path.sh
+[5.881s] -- Up-to-date: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/environment/ament_prefix_path.dsv
+[5.882s] -- Up-to-date: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/environment/path.sh
+[5.882s] -- Up-to-date: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/environment/path.dsv
+[5.882s] -- Up-to-date: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/local_setup.bash
+[5.882s] -- Up-to-date: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/local_setup.sh
+[5.882s] -- Up-to-date: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/local_setup.zsh
+[5.882s] -- Up-to-date: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/local_setup.dsv
+[5.882s] -- Installing: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/package.dsv
+[5.882s] -- Up-to-date: /home/marti/IKRA/install/robot_arm_control/share/ament_index/resource_index/packages/robot_arm_control
+[5.882s] -- Up-to-date: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/cmake/robot_arm_controlConfig.cmake
+[5.882s] -- Up-to-date: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/cmake/robot_arm_controlConfig-version.cmake
+[5.883s] -- Up-to-date: /home/marti/IKRA/install/robot_arm_control/share/robot_arm_control/package.xml
+[5.884s] Invoked command in '/home/marti/IKRA/build/robot_arm_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling /usr/bin/cmake --install /home/marti/IKRA/build/robot_arm_control
