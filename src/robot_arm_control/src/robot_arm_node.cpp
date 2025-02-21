@@ -1,7 +1,7 @@
 /* nodo ROS2 che calcola la cinematica inversa di un braccio planare 2R utilizzando il metodo 
    newton e pubblica i risultati, prendendo i parametri dal file dh_parameters.xml*/
 
-   //includo le librerie necessarie per ROS2 e per la gestione della cinematica inversa
+//includo le librerie necessarie per ROS2 e per la gestione della cinematica inversa
 #include <rclcpp/rclcpp.hpp>  //libreria Ros per creare i nodi
 #include <geometry_msgs/msg/pose.hpp> //messaggio per posizioni e orientamenti
 #include <eigen3/Eigen/Dense> //libreria per algebra lineare 
@@ -25,7 +25,7 @@ class RobotArmControl : public rclcpp::Node{
             publisher_=this->create_publisher<geometry_msgs::msg::Pose>("arm_position",10);
 
              // variabile booleana (per stampare i risultati una sola volta)
-            printed_once_ = false;
+            printed = false;
 
             // Carica i parametri DH da file
             read_DH_parameters("/home/marti/IKRA/src/robot_arm_control/src/dh_parameters.xml");
@@ -38,7 +38,7 @@ class RobotArmControl : public rclcpp::Node{
     private:
         // Publisher ROS per inviare la posizione del braccio
         rclcpp::Publisher<geometry_msgs::msg::Pose>::SharedPtr publisher_; //invia poszione del braccio al topic
-        bool printed_once_;
+        bool printed;
 
         /*struct per memorizzare i parametri DH*/
         struct DHParam{
@@ -66,7 +66,7 @@ class RobotArmControl : public rclcpp::Node{
                 return;
             }
             
-            // Pulisci eventuali dati precedenti
+            // Pulisci dati precedenti
             dh_parameters.clear();
             
             //leggo il primo elemento
@@ -78,7 +78,7 @@ class RobotArmControl : public rclcpp::Node{
                 pDH.a = 0.0;
                 pDH.theta = "";
 
-                // Leggi <theta> 
+                // Leggi <alpha> 
                 XMLElement* alphaElem = joint->FirstChildElement("alpha");
                 if(alphaElem && alphaElem->GetText()) {
                     pDH.alpha = stod(alphaElem->GetText());
@@ -95,7 +95,7 @@ class RobotArmControl : public rclcpp::Node{
                 if(aElem && aElem->GetText()) {
                     pDH.a = stod(aElem->GetText());
                 }
-                // Leggi <alpha> come stringa
+                // Leggi <theta>
                 XMLElement* thetaElem = joint->FirstChildElement("theta");
                 if(thetaElem && thetaElem->GetText()) {
                     pDH.theta =thetaElem->GetText(); 
@@ -133,7 +133,7 @@ class RobotArmControl : public rclcpp::Node{
 
         Eigen::Vector2d q(0.5, -0.5); // inizializzo angoli
 
-        const double tol   = 1e-3; // soglia di convergenza
+        const double err = 1e-3; // soglia di convergenza
         
         for (int i =0; i<20; i++){
             double q1 = q[0];
@@ -148,7 +148,7 @@ class RobotArmControl : public rclcpp::Node{
             double dy = y_corr-y_target;
 
             // Se l'errore è già piccolo, posso uscire
-            if (sqrt(dx*dx + dy*dy) < tol) {
+            if (sqrt(dx*dx + dy*dy) < err) {
                 RCLCPP_INFO(get_logger(), "Convergenza dopo %d iterazioni", i);
                 return q;
             }
@@ -197,10 +197,10 @@ class RobotArmControl : public rclcpp::Node{
         //pubblico su arm_position
         publisher_->publish(msg);
 
-        if(!printed_once_){
+        if(!printed){
             RCLCPP_INFO(this->get_logger(), "Angoli calcolati: q1=%.3f, q2=%.3f", 
                         q[0], q[1]);
-            printed_once_ = true;
+            printed = true;
         }
     }
 
